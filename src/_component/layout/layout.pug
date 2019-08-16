@@ -1,33 +1,30 @@
 doctype html
-block config
-    head
-        title This is title
-    body
-        block content
-doctype html
 html
-    block config
-    html
+    block awesome-config
+    head
         title=title
-        meta(name="description",content=description)
-        meta(name="robots", contentr="noindex" )
-        meta(name="viewport",
-             content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-             )
+        meta(name="description", content=description)
+        meta(name="robots", content="noindex")
+        meta(
+            name="viewport", 
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+        )
         link(
-            rel="cannonical", 
-            href="http://robertoblake.com/")
-        link(
-            rel="stylesheet", 
-            href="style.css")
+            rel="canonical", 
+            href="http://robertoblake.com/"
+        )
+        if config.entry.css.inline
+            link(rel="stylesheet", href=`${inlinePath}`, inline)
     body
         include ../header/header
         .content
-            block content
+            block awesome-content
         hr
         include ../featured/featured
-
         .footer
-        include ../footer/footer
-
-
+            include ../footer/footer
+        script(src="/asset/js/all.js")
+link(
+    rel="stylesheet", 
+    href="/style.css"
+)
